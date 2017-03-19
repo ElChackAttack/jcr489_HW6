@@ -64,8 +64,28 @@ CItem1.purchase_item()
 CItem2.purchase_item()
 CItem3.purchase_item()
 
-#This is where the program starts
+# This is where the program starts
 
+# Create the backbone to the program to be used to show the Cash Register class
 
-    
+"""
+Create program Shopping Cart
+
+1) Create a menu for the user to interact with the inventory
+    • Show the inventory just like in Q2
+2) Allow the user to select an action:
+    • Keep a running total for the items bought
+    • Buy product:
+        •It uses the purchase item method from Cash, and it should decrease
+         the number of units of said item from the object in the Retail Item
+         Class by the number of items wanted
+    • Change shopping cart:
+        •it should add back the amount of units back to the item in the 
+         RetailItem Class
+3) Show the products in the user's shopping cart and the running total of 
+      bill.
+Last option should be a yes/no question confirming or declining the 
+      purchase from the user.
+    •
+"""
     
