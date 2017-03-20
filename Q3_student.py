@@ -26,6 +26,10 @@ class RetailItem:
         
         return self.units
     
+    def set_units(self, new_units):
+        self.units = new_units
+        return self.units
+    
     def get_price(self):
         
         return self.price
@@ -47,6 +51,7 @@ class CashRegister:
     
     def purchase_item(self):
         CashRegister.purchased_items.append(self.item)
+        self.item.set_units(self.item.units - 1)
         return 'Item added'
         
     def get_total(self):
@@ -59,10 +64,11 @@ class CashRegister:
 CItem1 = CashRegister(Item1)
 CItem2 = CashRegister(Item2)
 CItem3 = CashRegister(Item3)
-
+print(Item3.get_all())
 CItem1.purchase_item()
 CItem2.purchase_item()
 CItem3.purchase_item()
+print(Item3.get_all())
 
 # This is where the program starts
 
@@ -90,4 +96,36 @@ Create program Shopping Cart
       • This returns a message of the amount of items the user bought and 
         the total price.
 """
+
+def main():
+#    Greeting function, then displays the inventory available
+
+#   Shopping Cart function:
+    #   Asks the customer one of the following options:
+    #        Buy:
+    #            - Show the items in Shopping Cart
+    #        Change
+    Greeting()
+    return Shopping_Cart()
+    
+def Greeting():
+    pass
+
+def Shopping_Cart():
+    pass     
+
+print()
+
+
+
+
+
+
+
+
+
+
+
+
+
     
