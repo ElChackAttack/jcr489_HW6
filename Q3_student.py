@@ -64,11 +64,11 @@ class CashRegister:
 CItem1 = CashRegister(Item1)
 CItem2 = CashRegister(Item2)
 CItem3 = CashRegister(Item3)
-print(Item3.get_all())
-CItem1.purchase_item()
-CItem2.purchase_item()
-CItem3.purchase_item()
-print(Item3.get_all())
+#print(Item3.get_all())
+CItem1.purchase_item() * 2
+#CItem2.purchase_item()
+#CItem3.purchase_item()
+print(Item1.get_all())
 
 # This is where the program starts
 
@@ -109,13 +109,40 @@ def main():
     return Shopping_Cart()
     
 def Greeting():
-    pass
-
+    inventory = [Item1.get_all(), Item2.get_all(), Item3.get_all()]
+    print('Welcome to Ricardo\'s Online Shop\nPlease take a look at our invent\
+ory:\n')
+    for Item in inventory:
+        print(Item)
 def Shopping_Cart():
-    pass     
+    Answer = input('Would you like to buy any of our products? (Y/N)\n>>> ')
+    Answer = Answer.strip().lower().capitalize()
+    while Answer != 'No' or Answer != 'N':
+        Buy = input('Which item would you like to buy?\n>>> ?')
+        if Buy == 'Item #1':
+            if Item1.get_units() == 0:
+                print('Sorry there are no more available units for sale')
+            else:
+                CItem1.purchase_item()
+        elif Buy == 'Item #2':
+            Available_Units = Item2.get_units()
+            if Item2.get_units() == 0:
+                print('Sorry there are no more available units for sale')
+            else:
+                units_to_buy = int(input('How many units would you like to buy\
+?\n>>> '))
+                CItem2.purchase_item() * units_to_buy
+        elif Buy == 'Item #3':
+            Available_Units = Item3.get_units()
+            units_to_buy = int(input('How many units would you like to buy\
+?\n>>> '))
+            if Available_Units == 0:
+                print('Sorry there are no more available units for sale')
+            elif units_to_buy <= Available_Units:
+                CItem3.purchase_item() * units_to_buy
 
-print()
-
+        Answer = input('Would you like to keep bying our products?\n>>> ')
+main()
 
 
 
