@@ -65,10 +65,10 @@ CItem1 = CashRegister(Item1)
 CItem2 = CashRegister(Item2)
 CItem3 = CashRegister(Item3)
 #print(Item3.get_all())
-CItem1.purchase_item() * 2
+#CItem1.purchase_item() * 2
 #CItem2.purchase_item()
 #CItem3.purchase_item()
-print(Item1.get_all())
+#print(Item1.get_all())
 
 # This is where the program starts
 
@@ -115,33 +115,68 @@ ory:\n')
     for Item in inventory:
         print(Item)
 def Shopping_Cart():
+    Bought_items = {'Item#1' : 0, 'Item#2' : 0, 'Item#3' : 0}
+    Total_Price = 0
     Answer = input('Would you like to buy any of our products? (Y/N)\n>>> ')
     Answer = Answer.strip().lower().capitalize()
-    while Answer != 'No' or Answer != 'N':
-        Buy = input('Which item would you like to buy?\n>>> ?')
+    while (Answer != 'No') and (Answer != 'N'):
+        Buy = input('Which item would you like to buy?\n>>> ')
         if Buy == 'Item #1':
-            if Item1.get_units() == 0:
-                print('Sorry there are no more available units for sale')
-            else:
-                CItem1.purchase_item()
-        elif Buy == 'Item #2':
-            Available_Units = Item2.get_units()
-            if Item2.get_units() == 0:
-                print('Sorry there are no more available units for sale')
-            else:
-                units_to_buy = int(input('How many units would you like to buy\
-?\n>>> '))
-                CItem2.purchase_item() * units_to_buy
-        elif Buy == 'Item #3':
-            Available_Units = Item3.get_units()
-            units_to_buy = int(input('How many units would you like to buy\
-?\n>>> '))
+            Available_Units = Item1.get_units()
+            print('There are ' + str(Available_Units) + ' available')
+            units_to_buy = int(input('How many units would you like to buy?\n>\
+>> '))
             if Available_Units == 0:
                 print('Sorry there are no more available units for sale')
             elif units_to_buy <= Available_Units:
-                CItem3.purchase_item() * units_to_buy
-
-        Answer = input('Would you like to keep bying our products?\n>>> ')
+                for times in range(units_to_buy):
+                    CItem1.purchase_item()
+                Bought_items['Item#1'] += units_to_buy
+                Total_Price += units_to_buy * Item1.get_price()
+            else:
+                print('Sorry, but you are trying to buy more units than there \
+are available')
+            
+        elif Buy == 'Item #2':
+            Available_Units = Item2.get_units()
+            print('There are ' + str(Available_Units) + ' available')
+            units_to_buy = int(input('How many units would you like to buy?\n>\
+>> '))
+            if Available_Units == 0:
+                print('Sorry there are no more available units for sale')
+            elif units_to_buy <= Available_Units:
+                for times in range(units_to_buy):
+                    CItem1.purchase_item()
+                Bought_items['Item#2'] += units_to_buy
+                Total_Price += units_to_buy * Item2.get_price()
+            else:
+                print('Sorry, but you are trying to buy more units than there \
+are available')
+        elif Buy == 'Item #3':
+            Available_Units = Item3.get_units()
+            print('There are ' + str(Available_Units) + ' available')
+            units_to_buy = int(input('How many units would you like to buy?\n>\
+>> '))
+            if Available_Units == 0:
+                print('Sorry there are no more available units for sale')
+            elif units_to_buy <= Available_Units:
+                for times in range(units_to_buy):
+                    CItem1.purchase_item()
+                Bought_items['Item#3'] += units_to_buy
+                Total_Price += units_to_buy * Item3.get_price()
+            else:
+                print('Sorry, but you are trying to buy more units than there \
+are available')
+        Answer = input('Would you like to keep buying our products?\n>>> ')
+        Answer = Answer.strip().lower().capitalize()
+    Final_purchased_items =  list()
+    for k,v in Bought_items.items():
+        Final_purchased_items.append((k,v))
+    print('Thank you for using Ricardo\'s Shop Online, you bought the followin\
+g items:\n')
+    print(Final_purchased_items)
+    print('The total cost for the purchased items is $' + '%.2f' % Total_Price)
+    return Final_purchased_items
 main()
 
 
