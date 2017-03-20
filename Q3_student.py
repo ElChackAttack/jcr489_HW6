@@ -84,8 +84,10 @@ Create program Shopping Cart
          RetailItem Class
 3) Show the products in the user's shopping cart and the running total of 
       bill.
-Last option should be a yes/no question confirming or declining the 
+4) Last option should be a yes/no question confirming or declining the 
       purchase from the user.
-    •
+      
+      • This returns a message of the amount of items the user bought and 
+        the total price.
 """
     
