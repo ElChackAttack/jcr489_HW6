@@ -36,7 +36,7 @@ class Account():
         
     def compound_interest(self, time):
         
-        return self.balance * (1 + self.rate) ** time
+        return (self.balance * (1 + self.rate) ** time) - self.balance
     # Str() return function
     def __str__(self):
         return self.holder + "," + self.balance
