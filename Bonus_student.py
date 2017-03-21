@@ -11,7 +11,9 @@ class PancakeStack():
 
     def get_size(self):
         return len(self.stack)
-
+    def find_next_smallest(self):
+        for i in range(self.get_size()):
+            return None
     # All of the pancakes are sorted after index
     # Returns the index of largest unsorted pancake
     def find_largest_pancake(self, index):
@@ -53,6 +55,6 @@ if __name__ == "__main__":
     print("Unsorted pancakes:", my_stack)
     case_one = PancakeStack(my_stack)
     print("Final order of pancakes: ", sort_pancakes(case_one))
-
+    print(case_one.find_next_smallest())
     
     
