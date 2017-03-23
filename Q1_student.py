@@ -10,6 +10,9 @@ import random
 
 # Bank account class
 class Account():
+    Accounts = {}
+    Number_of_Accounts = [i for i in range(101)]
+    Obj_list = []
     #Initializer
     def __init__(self, holder, acct_number, acct_type, balance):
         self.holder = holder
@@ -50,10 +53,27 @@ class Customer():
         return self.name + str(self.account.get_balance())
 
 def main():
-    Answer = 
+    """
+    The while loop for this program is a system to add accounts and keep track
+    of the clients through a dictionary that maps an account number to the name
+    acct type and balance of said account.
+    """
+    Answer = 'Yes'
+    while Answer != 'No':
+        index = 0
+        Customer_info = [input('Name of the Customer: '), 
+                        Account.Number_of_Accounts[index],
+                        input('Acct Type:'), int(input('Balance: '))]
+        index += 1
+        Account.Accounts.setdefault(Customer_info[1],(Customer_info[0],
+                                    Customer_info[2],
+                                    Customer_info[3]))
+        Answer = input('Would you like to continue entering accounts?')
     new_customer = Customer("Michael", "C", 20000)
     print(new_customer.account.get_holder())
     print(new_customer.account.get_balance())
     print(new_customer.account.compound_interest(10))
     print(new_customer.account.simple_interest(10))
+    print(Account.Accounts)
+    
 main()
