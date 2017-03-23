@@ -50,8 +50,7 @@ class Customer():
         return self.name + str(self.account.get_balance())
 
 def main():
-    # Quick test; replace this code with a system that does something useful
-    # Perhaps read some records from a file, then create & maintain a system
+    Answer = 
     new_customer = Customer("Michael", "C", 20000)
     print(new_customer.account.get_holder())
     print(new_customer.account.get_balance())
