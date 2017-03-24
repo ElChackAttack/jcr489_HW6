@@ -8,7 +8,7 @@ Created on Tue Mar 14 14:11:20 2017
 import random
 random.seed(0)
 
-TRI_DEPTH = 5
+TRI_DEPTH = 2
 
 class Triangle:
 
@@ -23,8 +23,23 @@ class Triangle:
 
     def get_maxsum(self):
         #write your code here, and be sure to return what you've done
-
-        return 
+        maxsum = [0 for i in range(len(self.my_row))]
+        if self.get_size() == 1:
+            maxsum[0] = self.my_row[0]
+        elif self.get_size() == 2:
+            for i in range(2):
+                maxsum[i] = self.my_row[i]
+        else:
+            maxsum[0] = self.up_t.get_maxsum()[0] + self.my_row[0]
+            maxsum[-1] = self.up_t.get_maxsum()[-1] + self.my_row[-1]
+            for i in range(1,self.size - 1):
+                if self.my_row[i] > self.my_row[i+1]:
+                    maxsum[i] += self.my_row[i] + (self.up_t.get_maxsum())[i]
+                else:
+                    maxsum[i] += self.my_row
+            
+            self.maxsum = maxsum
+        return self.maxsum
 
 def print_triangles(ts):
     for t in ts:
