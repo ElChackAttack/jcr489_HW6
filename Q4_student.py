@@ -25,15 +25,29 @@ class Triangle:
         #write your code here, and be sure to return what you've done
         maxsum = [0 for i in range(len(self.my_row))]
         if self.get_size() == 1:
-            maxsum = self.my_row[:]  
+            maxsum = self.my_row[:] 
         else:
             temp = self.up_t.get_maxsum()[:]
-            temp.extend(self.up_t.get_maxsum())
+            temp.extend(self.up_t.get_maxsum()[:])
             for i in range(self.size) :
-#           
-                to_add = temp[i] + self.my_row[i]
+                if i == 0:
+                    to_add = temp[i] + self.my_row[i]
+                    print('temp[{}]'.format(i)+str(temp[i]))
+                    print('self.my_row[{}]'.format(i)+str(self.my_row[i]))
+                else:
+                    if temp[i - 1] > temp[i]:
+                        to_add = temp[i-1] + self.my_row[i] 
+                        print('to add if:'+str(to_add))
+                    else:
+                        to_add = temp[i - 1] + self.my_row[i]
+                        print('to add else:'+str(to_add))
+#                if True:
+#                    to_add = temp[i] + self.my_row[i]
+#                else:
+#                    to_add = temp[i] + self.my_row[i]
+#                to_add = temp[i+1] + self.my_row[i]
                 maxsum[i] = to_add
-            print(temp)
+#            print(temp)
         self.maxsum = maxsum
         return self.maxsum
 """
